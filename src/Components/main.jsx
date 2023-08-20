@@ -1,13 +1,20 @@
+import React from 'react'
 import MemeData from './data'
-let url
+// let url
 export default function Main() {
-  const clickHandlerFun = () => {
-    console.log(MemeData)
     let memesArray = MemeData.data.memes
-    let randomImage = Math.floor(Math.random() * memesArray.length)
+    let randomImage = Math.floor(Math.random() * memesArray.length)//Number Random
+    const [memeImage, setMemeImage] = React.useState("")
+    // console.log(MemeData)
+    // console.log(randomImage)
+    console.log(memeImage + "Random url")
+  
+  const clickHandlerFun = () => {
+    setMemeImage(memesArray[randomImage].url)
     // for (let i=0; i<=lengthOfMeme; i++){
-    console.log(randomImage)
-    url = memesArray[randomImage].url
+    // url = memesArray[randomImage].url
+    // console.log(randomImage + "Random num")
+
     // }
   }
 
@@ -20,7 +27,9 @@ export default function Main() {
       <button onClick={clickHandlerFun} className='text-center bg-purple-800 w-full p-3 text-xl font-bold rounded text-white'>
         Get a new meme image
       </button>
-      <p>{url}</p>
+      <img className='m-auto mt-6' src={memeImage}>
+      </img>
+      {/* <p>{memeImage}</p> */}
 
     </div>
   )
